@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -eu
 
 # Auto-login to composio if API key is set (don't crash if it fails)
