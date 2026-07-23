@@ -35,4 +35,6 @@ export HERMES_DASHBOARD_BASIC_AUTH_USERNAME="$dashboard_username"
 export HERMES_DASHBOARD_BASIC_AUTH_PASSWORD="$dashboard_password"
 export HERMES_DASHBOARD_BASIC_AUTH_SECRET="$dashboard_secret"
 
+# Fix permissions for the hermes user
+chown -R 10000:10000 /data/.hermes 2>/dev/null || true
 exec /init /opt/hermes/docker/main-wrapper.sh "$@"
