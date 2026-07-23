@@ -1,11 +1,10 @@
 #!/bin/sh
 set -eu
 
-# Auto-login to composio if API key is set
+# Auto-login to composio if API key is set (don't crash if it fails)
 if [ -n "${COMPOSIO_API_KEY:-}" ]; then
   export PATH="/opt/composio:$PATH"
-  composio login --user-api-key "$COMPOSIO_API_KEY" --no-skill-install
-  echo "Composio authenticated"
+  composio login --user-api-key "$COMPOSIO_API_KEY" --no-skill-install 2>/dev/null || echo "Composio login failed (check your API key)"
 fi
 
 dashboard_username="${HERMES_DASHBOARD_BASIC_AUTH_USERNAME:-${ADMIN_USERNAME:-admin}}"
