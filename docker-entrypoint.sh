@@ -10,7 +10,7 @@ if [ -n "${COMPOSIO_API_KEY:-}" ]; then
   echo "[DEBUG] COMPOSIO_API_KEY prefix: ${COMPOSIO_API_KEY:0:8}..."
   echo "[DEBUG] Checking composio binary: $(ls -la /opt/composio/composio 2>&1)"
   echo "[DEBUG] Attempting composio login..."
-  HOME=/opt/data PATH="/opt/composio:$PATH" composio login --user-api-key "$COMPOSIO_API_KEY" --no-skill-install 2>&1
+  HOME=/opt/data PATH="/opt/composio:$PATH" composio login --user-api-key "$COMPOSIO_API_KEY" --no-skill-install 2>&1 || echo "[DEBUG] Composio login failed with exit code $?"
   echo "[DEBUG] Composio exit code: $?"
 fi
 
