@@ -1,5 +1,8 @@
 FROM nousresearch/hermes-agent:main@sha256:3fb7724c7ccf85d2bd64813fbc506868d5e190aa6cff170d3c8c7eb8e5d8a2cf
 
+# Install composio CLI
+RUN curl -fsSL https://raw.githubusercontent.com/ComposioHQ/composio/master/install.sh | COMPOSIO_INSTALL_DIR=/opt/composio sh
+
 COPY --chmod=0755 docker-entrypoint.sh /usr/local/bin/hermes-railway-entrypoint
 
 ENV HERMES_HOME=/data/.hermes \
